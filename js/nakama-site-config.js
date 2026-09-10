@@ -1,0 +1,1 @@
+window.NAKAMA_SITE={"businessName":"Praktek dokter gigi Jizel Zarra","customerName":"Daniel","category":"Clinic","email":"","whatsapp":"","city":"","address":"Jl. Imam Bonjol No.Kilo 1, Bungin, Luwuk, Kabupaten Banggai, Sulawesi Tengah 94712","tagline":"Pelayanan Maksimal","description":"Pelayanan Maksimal","assets":{},"instagram":"","facebook":"","theme":"clarity"};
