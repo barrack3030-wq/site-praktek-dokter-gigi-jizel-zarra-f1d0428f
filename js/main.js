@@ -18,6 +18,44 @@ document.addEventListener('DOMContentLoaded',()=>{
     }));
   }
 
+  const trust=document.querySelector('.trust-container');
+  if(trust){
+    const section=trust.closest('section');
+    const items=[...trust.querySelectorAll('.stat-item')];
+    trust.querySelectorAll('.stat-divider').forEach(el=>el.remove());
+    if(section) section.classList.add('trust-slider-section');
+    trust.classList.add('trust-slider');
+    trust.setAttribute('aria-label','Statistik praktek');
+    items.forEach((item,index)=>item.classList.add('trust-slide',`trust-slide-${index}`));
+
+    const style=document.createElement('style');
+    style.textContent=`
+      .trust-slider-section{padding:18px 0!important}
+      .trust-slider{position:relative!important;display:block!important;width:min(300px,100%);height:62px;margin:0 auto;overflow:hidden;border:1px solid var(--c-border);border-radius:100px;background:#fff;box-shadow:0 8px 24px rgba(0,0,0,.05)}
+      .trust-slider .stat-item{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;text-align:left;opacity:0;transform:translateX(18px);animation:trustStatSlider 12s infinite ease-in-out}
+      .trust-slider .stat-item h3{font-size:1.65rem;line-height:1;font-weight:500;margin:0;color:var(--c-accent)}
+      .trust-slider .stat-item p{font-size:.78rem;line-height:1.2;margin:0;color:var(--c-text-muted)}
+      .trust-slider .trust-slide-0{animation-delay:0s}
+      .trust-slider .trust-slide-1{animation-delay:3s}
+      .trust-slider .trust-slide-2{animation-delay:6s}
+      .trust-slider .trust-slide-3{animation-delay:9s}
+      @keyframes trustStatSlider{
+        0%,20%{opacity:1;transform:translateX(0)}
+        25%,100%{opacity:0;transform:translateX(-18px)}
+      }
+      @media(max-width:768px){
+        .trust-slider{width:250px;height:56px}
+        .trust-slider .stat-item h3{font-size:1.45rem}
+        .trust-slider .stat-item p{font-size:.72rem}
+      }
+      @media(prefers-reduced-motion:reduce){
+        .trust-slider .stat-item{animation:none;opacity:0;transform:none}
+        .trust-slider .trust-slide-0{opacity:1}
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
   const onScroll=()=>{header?.classList.toggle('scrolled',window.scrollY>24);backTop?.classList.toggle('show',window.scrollY>500)};
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
   backTop?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
