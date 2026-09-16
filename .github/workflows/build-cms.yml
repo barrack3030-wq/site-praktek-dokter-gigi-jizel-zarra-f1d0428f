@@ -50,6 +50,8 @@ jobs:
           ctx = Path('src/cms/CmsContext.tsx')
           text = ctx.read_text()
 
+          # Dental site collections that are intentionally enabled.
+          # Menu is disabled in cms-config.json and must never be injected.
           imports = "import defaultDoctors from '../../content/doctors/items.json';\nimport defaultServices from '../../content/services/items.json';\nimport defaultFacilities from '../../content/facilities/items.json';\n"
           marker = "import defaultPages from '../../content/pages/pages.json';"
           if 'defaultDoctors' not in text:
@@ -58,7 +60,18 @@ jobs:
           old = """      faq: defaultFaq,\n      pages: defaultPages\n    };"""
           new = """      faq: defaultFaq,\n      pages: defaultPages,\n      doctors: defaultDoctors,\n      services: defaultServices,\n      facilities: defaultFacilities\n    };"""
           text = text.replace(old, new)
-          text = text.replace("        faq: defaultFaq,\n        pages: defaultPages\n      });", "        faq: defaultFaq,\n        pages: defaultPages,\n        doctors: defaultDoctors,\n        services: defaultServices,\n        facilities: defaultFacilities\n      });")
+
+          text = text.replace(
+              "        faq: defaultFaq,\n        pages: defaultPages\n      });",
+              "        faq: defaultFaq,\n        pages: defaultPages,\n        doctors: defaultDoctors,\n        services: defaultServices,\n        facilities: defaultFacilities\n      });"
+          )
+
+          # Defensive cleanup: never leave a menu import/reference in this dental build.
+          lines = [line for line in text.splitlines() if "../../content/menu/items.json" not in line]
+          text = "\n".join(lines) + "\n"
+          text = text.replace("      menu: defaultMenu,\n", "")
+          text = text.replace("        menu: defaultMenu,\n", "")
+
           ctx.write_text(text)
           PY
 
