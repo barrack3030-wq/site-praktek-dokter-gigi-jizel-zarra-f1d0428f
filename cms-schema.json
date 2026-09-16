@@ -1,0 +1,103 @@
+{
+  "collections": {
+    "pages": {
+      "label": "Pages",
+      "singularLabel": "Page",
+      "icon": "file-text",
+      "identifierField": "title",
+      "fields": [
+        {"name":"title","label":"Judul Halaman","type":"text","required":true},
+        {"name":"slug","label":"Slug","type":"text","required":true},
+        {"name":"headline","label":"Headline","type":"text"},
+        {"name":"content","label":"Konten","type":"rich-text"},
+        {"name":"published","label":"Published","type":"toggle","defaultValue":true},
+        {"name":"seo","label":"SEO","type":"seo"}
+      ]
+    },
+    "doctors": {
+      "label": "Dokter",
+      "singularLabel": "Dokter",
+      "icon": "user-check",
+      "identifierField": "name",
+      "fields": [
+        {"name":"name","label":"Nama Dokter","type":"text","required":true},
+        {"name":"specialty","label":"Spesialisasi","type":"text"},
+        {"name":"bio","label":"Biografi","type":"textarea"},
+        {"name":"photo","label":"Foto Dokter","type":"image"}
+      ]
+    },
+    "services": {
+      "label": "Layanan",
+      "singularLabel": "Layanan",
+      "icon": "activity",
+      "identifierField": "title",
+      "fields": [
+        {"name":"title","label":"Nama Layanan","type":"text","required":true},
+        {"name":"description","label":"Deskripsi","type":"textarea"},
+        {"name":"icon","label":"Icon","type":"text"},
+        {"name":"featured","label":"Featured","type":"toggle","defaultValue":true}
+      ]
+    },
+    "testimonials": {
+      "label": "Ulasan Pasien",
+      "singularLabel": "Ulasan",
+      "icon": "message-square",
+      "identifierField": "author",
+      "fields": [
+        {"name":"author","label":"Nama","type":"text","required":true},
+        {"name":"quote","label":"Ulasan","type":"textarea","required":true},
+        {"name":"rating","label":"Rating","type":"number","defaultValue":5},
+        {"name":"featured","label":"Featured","type":"toggle","defaultValue":true}
+      ]
+    },
+    "reservation": {
+      "label": "Appointment",
+      "singularLabel": "Appointment",
+      "icon": "calendar",
+      "identifierField": "guestName",
+      "fields": [
+        {"name":"guestName","label":"Nama Pasien","type":"text","required":true},
+        {"name":"phone","label":"WhatsApp / Telepon","type":"phone"},
+        {"name":"service","label":"Kebutuhan","type":"text"},
+        {"name":"date","label":"Tanggal","type":"date"},
+        {"name":"time","label":"Waktu","type":"time"},
+        {"name":"message","label":"Pesan","type":"textarea"},
+        {"name":"status","label":"Status","type":"select","options":["Baru","Dikonfirmasi","Selesai","Batal"]}
+      ]
+    },
+    "gallery": {
+      "label": "Galeri Praktek",
+      "singularLabel": "Foto",
+      "icon": "image",
+      "identifierField": "title",
+      "fields": [
+        {"name":"title","label":"Judul","type":"text","required":true},
+        {"name":"url","label":"URL Foto","type":"image","required":true},
+        {"name":"altText","label":"Alt Text","type":"text"},
+        {"name":"featured","label":"Featured","type":"toggle","defaultValue":true}
+      ]
+    },
+    "faq": {
+      "label": "FAQ",
+      "singularLabel": "Pertanyaan",
+      "icon": "help-circle",
+      "identifierField": "question",
+      "fields": [
+        {"name":"question","label":"Pertanyaan","type":"text","required":true},
+        {"name":"answer","label":"Jawaban","type":"textarea","required":true},
+        {"name":"order","label":"Urutan","type":"number","defaultValue":1}
+      ]
+    },
+    "facilities": {
+      "label": "Fasilitas",
+      "singularLabel": "Fasilitas",
+      "icon": "building-2",
+      "identifierField": "title",
+      "fields": [
+        {"name":"title","label":"Judul","type":"text","required":true},
+        {"name":"description","label":"Deskripsi","type":"textarea"},
+        {"name":"image","label":"Foto","type":"image"}
+      ]
+    }
+  }
+}

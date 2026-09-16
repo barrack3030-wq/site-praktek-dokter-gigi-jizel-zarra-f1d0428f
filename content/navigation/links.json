@@ -1,0 +1,10 @@
+{
+  "links": [
+    {"label":"Tentang","href":"#about","order":1},
+    {"label":"Layanan","href":"#services","order":2},
+    {"label":"Dokter","href":"#doctor","order":3},
+    {"label":"Ulasan","href":"#reviews","order":4},
+    {"label":"Praktek","href":"#facilities","order":5},
+    {"label":"FAQ","href":"#faq","order":6}
+  ]
+}

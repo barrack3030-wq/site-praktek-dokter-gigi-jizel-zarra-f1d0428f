@@ -1,0 +1,6 @@
+[
+  {"id":"faq-1","question":"Bagaimana cara membuat janji?","answer":"Gunakan formulir appointment, lalu lanjutkan konfirmasi melalui WhatsApp praktek.","order":1},
+  {"id":"faq-2","question":"Apakah sebaiknya membuat janji terlebih dahulu?","answer":"Sebaiknya membuat janji terlebih dahulu agar waktu kunjungan dapat diatur dengan lebih baik.","order":2},
+  {"id":"faq-3","question":"Di mana lokasi prakteknya?","answer":"Jl. Imam Bonjol No.Kilo 1, Bungin, Luwuk, Kabupaten Banggai, Sulawesi Tengah 94712.","order":3},
+  {"id":"faq-4","question":"Apakah bisa konsultasi sebelum perawatan?","answer":"Ya. Konsultasi membantu memahami kondisi dan pilihan perawatan yang sesuai.","order":4}
+]

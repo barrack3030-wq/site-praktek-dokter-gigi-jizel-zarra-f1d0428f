@@ -1,0 +1,24 @@
+{
+  "siteName": "Praktek Dokter Gigi Jizel Zarra",
+  "siteType": "dental",
+  "version": "1.0.0",
+  "targetRepository": "barrack3030-wq/site-praktek-dokter-gigi-jizel-zarra-f1d0428f",
+  "apiEndpoint": "",
+  "features": {
+    "pages": true,
+    "doctors": true,
+    "services": true,
+    "testimonials": true,
+    "gallery": true,
+    "reservation": true,
+    "faq": true,
+    "blog": false,
+    "products": false,
+    "menu": false,
+    "destinations": false,
+    "packages": false,
+    "team": false,
+    "courses": false,
+    "facilities": true
+  }
+}

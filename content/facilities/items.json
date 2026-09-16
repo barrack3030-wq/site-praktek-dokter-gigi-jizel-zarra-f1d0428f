@@ -1,0 +1,5 @@
+[
+  {"id":"fac-1","title":"Ruang praktek","description":"Ruang praktek yang dirancang untuk pengalaman yang lebih tenang.","image":"https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=85"},
+  {"id":"fac-2","title":"Peralatan praktek","description":"Peralatan pendukung untuk pelayanan perawatan gigi.","image":"https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=700&q=85"},
+  {"id":"fac-3","title":"Perawatan pasien","description":"Suasana perawatan yang mengutamakan kenyamanan pasien.","image":"https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=700&q=85"}
+]

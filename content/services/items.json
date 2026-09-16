@@ -1,0 +1,5 @@
+[
+  {"id":"srv-1","title":"Konsultasi & Pemeriksaan","description":"Pemeriksaan kondisi gigi dan mulut serta diskusi kebutuhan perawatan.","icon":"⌁","featured":true},
+  {"id":"srv-2","title":"Perawatan Gigi","description":"Perawatan untuk membantu menjaga kesehatan dan fungsi gigi.","icon":"✦","featured":true},
+  {"id":"srv-3","title":"Perawatan Estetik","description":"Konsultasikan kebutuhan perawatan untuk menunjang penampilan.","icon":"◇","featured":true}
+]

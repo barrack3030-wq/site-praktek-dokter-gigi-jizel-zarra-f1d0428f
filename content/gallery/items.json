@@ -1,0 +1,5 @@
+[
+  {"id":"gallery-1","title":"Ruang praktek","url":"https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=85","altText":"Ruang praktek gigi","featured":true},
+  {"id":"gallery-2","title":"Peralatan praktek","url":"https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=700&q=85","altText":"Peralatan praktek gigi","featured":true},
+  {"id":"gallery-3","title":"Perawatan pasien","url":"https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=700&q=85","altText":"Perawatan gigi","featured":true}
+]
