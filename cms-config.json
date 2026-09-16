@@ -3,7 +3,7 @@
   "siteType": "dental",
   "version": "1.0.0",
   "targetRepository": "barrack3030-wq/site-praktek-dokter-gigi-jizel-zarra-f1d0428f",
-  "apiEndpoint": "",
+  "apiEndpoint": "https://script.google.com/macros/s/AKfycbwc3ZCKsENsazIbvmxQX19nmXpaQOlpRmsArvi61wh4X0D-Io_ceRPm_aljuP121t4Y/exec",
   "features": {
     "pages": true,
     "doctors": true,
