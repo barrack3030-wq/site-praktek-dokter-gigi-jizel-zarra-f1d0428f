@@ -1,0 +1,94 @@
+name: Build Integrated CMS
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'cms/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-cms:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout website repository
+        uses: actions/checkout@v4
+        with:
+          path: site
+
+      - name: Checkout Nakama Premium CMS
+        uses: actions/checkout@v4
+        with:
+          repository: barrack3030-wq/NAKAMA-PREMIUM-CMS
+          ref: main
+          path: cms-source
+
+      - name: Inject website configuration and content
+        shell: bash
+        run: |
+          cp site/cms-config.json cms-source/cms-config.json
+          cp site/cms-schema.json cms-source/cms-schema.json
+          rm -rf cms-source/content
+          cp -R site/content cms-source/content
+
+      - name: Adapt CMS for GitHub Pages subpath and dental collections
+        working-directory: cms-source
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          vite = Path('vite.config.ts')
+          text = vite.read_text()
+          if 'base:' not in text:
+              text = text.replace("return {\n    plugins:", "return {\n    base: process.env.VITE_CMS_BASE || '/',\n    plugins:")
+          vite.write_text(text)
+
+          ctx = Path('src/cms/CmsContext.tsx')
+          text = ctx.read_text()
+
+          imports = "import defaultDoctors from '../../content/doctors/items.json';\nimport defaultServices from '../../content/services/items.json';\nimport defaultFacilities from '../../content/facilities/items.json';\n"
+          marker = "import defaultPages from '../../content/pages/pages.json';"
+          if 'defaultDoctors' not in text:
+              text = text.replace(marker, marker + '\n' + imports)
+
+          old = """      faq: defaultFaq,\n      pages: defaultPages\n    };"""
+          new = """      faq: defaultFaq,\n      pages: defaultPages,\n      doctors: defaultDoctors,\n      services: defaultServices,\n      facilities: defaultFacilities\n    };"""
+          text = text.replace(old, new)
+          text = text.replace("        faq: defaultFaq,\n        pages: defaultPages\n      });", "        faq: defaultFaq,\n        pages: defaultPages,\n        doctors: defaultDoctors,\n        services: defaultServices,\n        facilities: defaultFacilities\n      });")
+          ctx.write_text(text)
+          PY
+
+      - name: Install CMS dependencies
+        working-directory: cms-source
+        run: npm install
+
+      - name: Build CMS
+        working-directory: cms-source
+        env:
+          VITE_CMS_BASE: /site-praktek-dokter-gigi-jizel-zarra-f1d0428f/cms/
+        run: npm run build
+
+      - name: Install CMS into website /cms/
+        shell: bash
+        run: |
+          rm -rf site/cms
+          mkdir -p site/cms
+          cp -R cms-source/dist/. site/cms/
+
+      - name: Commit generated CMS
+        working-directory: site
+        shell: bash
+        run: |
+          git config user.name 'Nakama CMS Builder'
+          git config user.email 'actions@users.noreply.github.com'
+          git add cms
+          if git diff --cached --quiet; then
+            echo 'No CMS changes to commit.'
+            exit 0
+          fi
+          git commit -m 'Build Nakama CMS into /cms/'
+          git push
